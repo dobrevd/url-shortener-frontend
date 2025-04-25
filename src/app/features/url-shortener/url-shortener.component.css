@@ -1,0 +1,75 @@
+:host {
+    display: block;
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 24px;
+    border-radius: 12px;
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #343a40;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  
+  input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+  }
+  
+  input[type="text"]:focus {
+    border-color: #495057;
+    outline: none;
+  }
+  
+  button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .mode-indicator {
+    display: block;
+    text-align: center;
+    margin: 12px 0;
+    font-weight: bold;
+    color: #6c757d;
+  }
+  
+  a {
+    color: #28a745;
+    word-break: break-all;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  p {
+    margin: 0 0 4px;
+    font-weight: 600;
+    color: #343a40;
+  }
+  

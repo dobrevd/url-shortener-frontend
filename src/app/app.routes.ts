@@ -1,3 +1,7 @@
 import { Routes } from '@angular/router';
+import { UrlShortenerComponent } from './features/url-shortener/url-shortener.component';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+  { path: 'shortener', component: UrlShortenerComponent },
+  { path: '', redirectTo: 'shortener', pathMatch: 'full' },
+];
