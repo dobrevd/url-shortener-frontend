@@ -1,56 +1,74 @@
-<h2>URL Shortener</h2>
+<app-header />
 
-<button (click)="toggleMode()">
-  {{ mode === "shorten" ? "Switch to Resolve" : "Switch to Shorten" }}
-</button>
-<span class="mode-indicator"
-  >(Current: {{ mode === "shorten" ? "Shorten" : "Resolve" }})</span
->
+<div class="main-content">
+  <div class="action-buttons">
+    <app-url-action-button
+      [buttonText]="'Shorten'"
+      (click)="showShortenForm()"
+      [customClass]="activeAction === 'shorten' ? 'active' : ''"
+    >
+    </app-url-action-button>
 
-<form *ngIf="mode === 'shorten'" (ngSubmit)="shortenUrl()">
-  <input
-    type="text"
-    [(ngModel)]="userId"
-    name="userId"
-    placeholder="Enter user ID"
-    required
-  />
+    <app-url-action-button
+      [buttonText]="'Resolve'"
+      (click)="showResolveForm()"
+      [customClass]="activeAction === 'resolve' ? 'active' : ''"
+    >
+    </app-url-action-button>
+  </div>
 
-  <input
-    type="text"
-    [(ngModel)]="originalUrl"
-    name="originalUrl"
-    placeholder="Enter Long-URL"
-    required
-  />
+  <div class="forms">
+    <article *ngIf="isShortenFormVisible">
+      <form (ngSubmit)="shortenUrl()">
+        <input
+          type="text"
+          [(ngModel)]="userId"
+          name="userId"
+          placeholder="Enter user ID"
+          required
+        />
+        <input
+          type="text"
+          [(ngModel)]="originalUrl"
+          name="originalUrl"
+          placeholder="Enter Long-URL"
+          required
+        />
+        <button type="submit" class="primary-button">Get Short-URL</button>
+      </form>
 
-  <button type="submit">Shorten</button>
-</form>
+      <div *ngIf="shortUrl" class="short-url-box">
+        <p class="short-url-label">Short URL:</p>
+        <a [href]="shortUrl" target="_blank" class="short-url-link">
+          <span class="link-icon">🔗</span> {{ shortUrl }}
+        </a>
+      </div>      
+    </article>
 
-<div *ngIf="shortUrl && mode === 'shorten'">
-  <p>Short URL:</p>
-  <a [href]="shortUrl" target="_blank">{{ shortUrl }}</a>
-</div>
+    <article *ngIf="isResolveFormVisible">
+      <form (ngSubmit)="resolveUrl()">
+        <input
+          type="text"
+          [(ngModel)]="userId"
+          name="userId"
+          placeholder="Enter user ID"
+          required
+        />
+        <input
+          [(ngModel)]="shortUrlKey"
+          placeholder="Enter Short-URL"
+          name="shortUrlKey"
+          required
+        />
+        <button type="submit" class="primary-button">Get Long-URL</button>
+      </form>
 
-<form *ngIf="mode === 'resolve'" (ngSubmit)="resolveUrl()">
-  <input
-    type="text"
-    [(ngModel)]="userId"
-    name="userId"
-    placeholder="Enter user ID"
-    required
-  />
-
-  <input
-    [(ngModel)]="shortUrlKey"
-    placeholder="Enter Short-URL"
-    name="shortUrlKey"
-    required
-  />
-  <button (click)="resolveUrl()">Get Long-URL</button>
-</form>
-
-<div *ngIf="retrievedLongUrl && mode === 'resolve'">
-  <p>Long-URL:</p>
-  <a [href]="retrievedLongUrl" target="_blank">{{ retrievedLongUrl }}</a>
+      <div *ngIf="retrievedLongUrl" class="short-url-box">
+        <p class="short-url-label">Long-URL:</p>
+        <a [href]="retrievedLongUrl" target="_blank" class="short-url-link">
+          <span class="link-icon">🌐</span> {{ retrievedLongUrl }}
+        </a>
+      </div>
+    </article>
+  </div>
 </div>

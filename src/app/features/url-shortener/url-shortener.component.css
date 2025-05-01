@@ -1,75 +1,190 @@
-:host {
-    display: block;
-    max-width: 500px;
-    margin: 40px auto;
-    padding: 24px;
-    border-radius: 12px;
-    background-color: #f8f9fa;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    font-family: Arial, sans-serif;
-  }
-  
-  h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #343a40;
-  }
-  
-  form {
-    display: flex;
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: #f7f3ff;
+  color: #25113d;
+}
+
+.main-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  max-width: 50rem;
+  margin: 2rem auto 0 auto;
+  gap: 3rem;
+  padding: 0 0rem;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 0 0 auto;
+}
+
+app-url-action-button.active,
+app-url-action-button .active {
+  background-color: #25113d;
+  color: #ffffff;
+  border-left: 5px solid #ffffff;
+  transition: all 0.2s ease-in-out;
+}
+
+.forms {
+  flex: 1;
+  min-width: 0;
+  max-width: 100%;
+}
+
+article {
+  padding: 1rem;
+  color: #25113d;
+  background-color: #9965dd;
+  border-radius: 8px;
+}
+
+article+article {
+  margin-top: 2rem;
+  border-top: 2px dashed #ccc;
+  padding-top: 2rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 400px;
+}
+
+form input {
+  padding: 0.4rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+form input:focus {
+  outline: none;
+  border-color: #9965dd;
+  box-shadow: 0 0 3px #9965dd;
+}
+
+.primary-button {
+  background-color: #433352;
+  color: #decdf2;
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.primary-button:hover {
+  background-color: #5a4091;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+  margin: 0;
+}
+
+.actions {
+  text-align: right;
+  margin: 0;
+}
+
+.actions button {
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  background-color: #380774;
+  color: #decdf2;
+  border-radius: 4px;
+  padding: 0.5rem 1.5rem;
+  border: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.actions button:hover,
+.actions button:active {
+  background-color: #4a0774;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+}
+
+a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #decdf2;
+}
+
+@media (max-width: 600px) {
+  .main-content {
     flex-direction: column;
-    gap: 12px;
-    margin-bottom: 20px;
+    gap: 2rem;
+    padding: 0 1rem;
   }
-  
-  input[type="text"] {
-    padding: 10px;
-    border: 1px solid #ced4da;
-    border-radius: 6px;
-    font-size: 1rem;
-    transition: border-color 0.3s;
+
+  .action-buttons {
+    flex-direction: row;
+    justify-content: space-around;
   }
-  
-  input[type="text"]:focus {
-    border-color: #495057;
-    outline: none;
+
+  form {
+    max-width: 100%;
   }
-  
-  button {
-    padding: 10px 16px;
-    border: none;
-    border-radius: 6px;
-    font-size: 1rem;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s;
+}
+
+.short-url-box {
+  background-color: #f3ebff;
+  border: 2px solid #9965dd;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+  box-shadow: 0 4px 10px rgba(153, 101, 221, 0.2);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.short-url-label {
+  margin: 0 0 0.5rem 0;
+  font-weight: bold;
+  color: #4a0774;
+}
+
+.short-url-link {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #9965dd;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.short-url-link:hover {
+  background-color: #7b4cc4;
+  transform: scale(1.02);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.link-icon {
+  margin-right: 0.5rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
   }
-  
-  button:hover {
-    background-color: #0056b3;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .mode-indicator {
-    display: block;
-    text-align: center;
-    margin: 12px 0;
-    font-weight: bold;
-    color: #6c757d;
-  }
-  
-  a {
-    color: #28a745;
-    word-break: break-all;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-  }
-  
-  p {
-    margin: 0 0 4px;
-    font-weight: 600;
-    color: #343a40;
-  }
-  
+}
