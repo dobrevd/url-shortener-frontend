@@ -51,7 +51,7 @@ export class UrlShortenerComponent {
     console.log('Sending headers:', headers);
 
     this.http
-      .post('http://localhost:8081/api', payload, {
+      .post('/api', payload, {
         headers,
         responseType: 'text',
       })
@@ -69,7 +69,7 @@ export class UrlShortenerComponent {
     }
 
     this.http
-      .get(`http://localhost:8081/api?shortUrl=${this.shortUrlKey}`, {
+      .get(`/api?shortUrl=${this.shortUrlKey}`, {
         headers,
         responseType: 'text',
       })
