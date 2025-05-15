@@ -4,12 +4,24 @@
   <h2>Audit Service</h2>
   <h3>You can fetch data from MongoDB</h3>
 
-  <button (click)="fetchLog()" [disabled]="isLoading" class="fetch-button">
-    @if (isLoading) {
-    <span class="spinner"></span>
-    }
-    {{ isLoading ? "Loading..." : "Fetch Audit log" }}
-  </button>
+  <div class="controls">
+    <button (click)="fetchLog()" [disabled]="isLoading" class="fetch-button">
+      @if (isLoading) {
+      <span class="spinner"></span>
+      }
+      {{ isLoading ? "Loading..." : "Refresh Data" }}
+    </button>
+
+    <div class="page-size-selector">
+      <label for="pageSize">Items per page:</label>
+      <select id="pageSize" [(ngModel)]="pageSize" (change)="fetchLog(0)">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="50">50</option>
+      </select>
+    </div>
+  </div>
 
   @if (error) {
   <div class="error-message">
@@ -22,12 +34,18 @@
     <table>
       <thead>
         <tr>
-          <th>Request ID</th>
-          <th>User ID</th>
+          <th (click)="changeSort('eventId')">
+            Request ID @if(sortField === 'eventId') { ({{ sortDirection }})}
+          </th>
+          <th (click)="changeSort('userId')">
+            User ID @if(sortField === 'userId') { ({{ sortDirection }})}
+          </th>
           <th>Event Type</th>
           <th>Short URL</th>
           <th>Original URL</th>
-          <th>Date</th>
+          <th (click)="changeSort('timestamp')">
+            Date @if(sortField === 'timestamp') { ({{ sortDirection }})}
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -51,6 +69,25 @@
         }
       </tbody>
     </table>
+
+    <div class="pagination-controls">
+      <button
+        (click)="onPageChange(currentPage - 1)"
+        [disabled]="currentPage === 0 || isLoading"
+      >
+        Previous
+      </button>
+
+      <span>Page {{ currentPage + 1 }} of {{ totalPages }}</span>
+      <span>Total items: {{ totalElements }}</span>
+
+      <button
+        (click)="onPageChange(currentPage + 1)"
+        [disabled]="currentPage >= totalPages - 1 || isLoading"
+      >
+        Next
+      </button>
+    </div>
   </div>
   }
 </main>
