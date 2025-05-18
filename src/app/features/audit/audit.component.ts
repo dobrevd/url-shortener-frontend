@@ -49,7 +49,7 @@ export class AuditComponent implements OnInit {
       .set('sort', `${this.sortField},${this.sortDirection}`);
 
     this.http
-      .get<PageResponse<UrlEvent>>('http://localhost:8082/api/audit', {
+      .get<PageResponse<UrlEvent>>('http://localhost/api/audit', {  // localhost:8082
         params,
       })
       .pipe(
