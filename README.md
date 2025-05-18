@@ -5,9 +5,11 @@
 The **URL Shortener Service Frontend** is the frontend component of a microservice-based URL shortening application.  
 It allows users to convert long referral links from our platform into compact, shareable URLs.  
 This is especially useful for sharing on platforms like social media, where shorter links improve appearance and usability.
+URL Audit Service stores and provides paginated click events.
 
 Backend source code is available at:  
-👉 [GitHub - dobrevd/url_shortener_service](https://github.com/dobrevd/url_shortener_service)
+👉 [GitHub - URL Shortener Service](https://github.com/dobrevd/url_shortener_service)
+👉 [GitHub - URL Audit Service](https://github.com/dobrevd/url-audit-service)
 
 ## 🛠 GitHub Actions: CI/CD Workflow for Angular App
 
@@ -46,4 +48,3 @@ To push to Docker Hub, add the following secrets to repository:
 | `DOCKERHUB_TOKEN`    | Docker Hub access token (not password) |
 
 ---
-

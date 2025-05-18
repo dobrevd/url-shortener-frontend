@@ -1,0 +1,61 @@
+.contact-wrapper {
+    max-width: 700px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background: linear-gradient(to right, #e8f5e9, #c8e6c9);
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(46, 125, 50, 0.2);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #1b5e20;
+}
+
+.contact-header h2 {
+    margin-bottom: 0.5rem;
+    font-size: 2rem;
+    text-align: center;
+    color: #2e7d32;
+}
+
+.contact-header p {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #388e3c;
+    margin-bottom: 2rem;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.contact-item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #f1f8e9;
+    padding: 1rem;
+    border-left: 6px solid #66bb6a;
+    border-radius: 8px;
+}
+
+.label {
+    font-weight: bold;
+    font-size: 1.1rem;
+    width: 100px;
+}
+
+.value {
+    font-size: 1.1rem;
+    flex-grow: 1;
+}
+
+.link {
+    color: #2e7d32;
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+    color: #1b5e20;
+}
