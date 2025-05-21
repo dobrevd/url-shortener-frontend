@@ -1,10 +1,12 @@
-FROM node:18-alpine as build
+FROM node:23-alpine AS build
+
+ARG ANGULAR_ENV=production
 
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
-RUN npm run build -- --configuration production
+RUN npm run build -- --configuration $ANGULAR_ENV
 
 FROM nginx:alpine
 COPY --from=build /app/dist/my-project/browser /usr/share/nginx/html

@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { UrlActionButtonComponent } from './buttons/url-action-button/url-action-button.component';
 import { HeaderComponent } from './header/header/header.component';
 
+import { environment } from '../../../environments/environment.dev';
+
 @Component({
   selector: 'app-url-shortener',
   standalone: true,
@@ -51,7 +53,7 @@ export class UrlShortenerComponent {
     console.log('Sending headers:', headers);
 
     this.http
-      .post('/api', payload, {
+      .post(environment.apis.shortener, payload, {
         headers,
         responseType: 'text',
       })
@@ -69,7 +71,7 @@ export class UrlShortenerComponent {
     }
 
     this.http
-      .get(`/api?shortUrl=${this.shortUrlKey}`, {
+      .get(`${environment.apis.shortener}?shortUrl=${this.shortUrlKey}`, {
         headers,
         responseType: 'text',
       })

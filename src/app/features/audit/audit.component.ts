@@ -7,6 +7,8 @@ import { PageResponse } from '../../shared/interfaces/PageResponse.interface';
 import { DatePipe } from '@angular/common';
 import { catchError, finalize, of } from 'rxjs';
 
+import { environment } from '../../../environments/environment';
+
 @Component({
   selector: 'app-audit',
   standalone: true,
@@ -49,7 +51,7 @@ export class AuditComponent implements OnInit {
       .set('sort', `${this.sortField},${this.sortDirection}`);
 
     this.http
-      .get<PageResponse<UrlEvent>>('http://localhost/api/audit', {  // localhost:8082
+      .get<PageResponse<UrlEvent>>(environment.apis.audit, {
         params,
       })
       .pipe(
